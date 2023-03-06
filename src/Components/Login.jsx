@@ -10,8 +10,21 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        console.log(name, email, password);
-    }
+        const UserInfo = {
+            name,
+            email,
+            password
+        };
+
+        fetch('http://localhost:5000/', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(UserInfo)
+        })
+
+    };
 
 
     return (
@@ -27,19 +40,19 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input type="text" placeholder="name" className="input input-bordered" />
+                                <input name='name' type="text" placeholder="name" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" placeholder="email" className="input input-bordered" />
+                                <input name='email' type="text" placeholder="email" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="text" placeholder="password" className="input input-bordered" />
+                                <input name='password' type="password" placeholder="password" className="input input-bordered" />
                             </div>
                             <div className="form-control mt-6">
                                 <input className="btn btn-success" type="submit" value="Login" />
